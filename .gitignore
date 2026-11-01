@@ -1,0 +1,37 @@
+# Runtime storage is NEVER part of a repository or installation source.
+/data/*
+!/data/.htaccess
+!/data/index.php
+!/data/.gitkeep
+
+# Runtime keys, credentials and accidental copies anywhere in the tree.
+*.log
+*.bak
+*.sql
+*.sqlite
+*.zip
+*.tgz
+*.tmp
+*.tmp.*
+.env
+.env.*
+!.env.example
+**/.master_secret.php
+**/.setup_token.php
+**/sessions.json
+**/users.json
+**/config.json
+**/contacts.json
+**/upload_receipts/**
+
+# Local dev/test dependencies and temp outputs.
+node_modules/
+.coverage
+.pytest_cache/
+__pycache__/
+.venv/
+.cache/
+*.pyc
+.DS_Store
+.idea/
+.vscode/

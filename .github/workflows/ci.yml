@@ -1,0 +1,55 @@
+name: PHP and JSON integration
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, openssl, fileinfo, dom, curl, json
+          coverage: none
+      - name: Syntax and parser fixture
+        run: |
+          find . -name '*.php' -not -path './data/*' -print0 | xargs -0 -n1 php -l
+          node --check assets/js/app.js
+          node --check sw.js
+          node tests/service_worker.cjs
+          node --check tests/browser.cjs
+          node --check tests/browser_features.cjs
+          node --check tests/browser_review.cjs
+          node --check tests/browser_activity.cjs
+          python3 -m py_compile tests/integration.py tests/new_features.py tests/review_features.py tests/account_activity.py
+          php tests/telegram_preview.php
+      - name: Run on disposable copy (never production data)
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/hamrah-venv"
+          "$RUNNER_TEMP/hamrah-venv/bin/pip" install requests
+          fixture="$HOME/.cache/hamrah-test-site"
+          mkdir -p "$fixture/data"
+          tar --exclude='./data' --exclude='./.git' --exclude='./tests' -cf - . | tar -xf - -C "$fixture"
+          cp data/.htaccess data/index.php "$fixture/data/"
+          (cd "$fixture" && php -S 0.0.0.0:8788 router.php) > "$RUNNER_TEMP/hamrah-php.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8788/index.php >/dev/null; then break; fi
+            sleep 0.25
+          done
+          "$RUNNER_TEMP/hamrah-venv/bin/python" tests/integration.py http://127.0.0.1:8788 "$fixture"
+          "$RUNNER_TEMP/hamrah-venv/bin/python" tests/new_features.py http://127.0.0.1:8788 "$fixture"
+          "$RUNNER_TEMP/hamrah-venv/bin/python" tests/review_features.py http://127.0.0.1:8788 "$fixture"
+          "$RUNNER_TEMP/hamrah-venv/bin/python" tests/account_activity.py http://127.0.0.1:8788 "$fixture"
