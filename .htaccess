@@ -1,0 +1,78 @@
+# ==========================================================
+# Chat Amn - cPanel Security & Performance Rules
+# Compatible with Apache 2.2 / 2.4 & LiteSpeed (Iranian Hosts)
+# ==========================================================
+
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Block any direct HTTP access to private storage, internals, tests and VCS.
+    RewriteRule ^(data|core|tests)(/|$) - [F,L,NC]
+    RewriteRule (^|/)\.(git|svn|hg|env|htaccess|user\.ini)(/|$) - [F,L,NC]
+</IfModule>
+
+# Keep archives/backups and private dotfiles off HTTP.
+<FilesMatch "^(.*\.(zip|bak|sql|log)|\..*)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Protect hidden files while allowing AutoSSL/ACME /.well-known/ challenges.
+<FilesMatch "^\.(?!well-known$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "same-origin"
+</IfModule>
+
+# UTF-8 charset & Font MIME types for offline local loading
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType application/manifest+json .webmanifest
+    AddType audio/webm .webm
+    AddType audio/ogg .ogg
+    AddType audio/mp4 .m4a
+    AddType video/mp4 .mp4
+</IfModule>
+
+# Optional PHP tuning when running under mod_php or LiteSpeed LSAPI
+<IfModule lsapi_module>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 68M
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 68M
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 68M
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+
+# Gzip / Deflate compression for fast loading on slow emergency mobile networks
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>

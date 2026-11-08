@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="چت امن">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#57BCEB"/><stop offset="1" stop-color="#2588D0"/></linearGradient>
+    <filter id="soft"><feDropShadow dx="0" dy="9" stdDeviation="12" flood-color="#0A486C" flood-opacity=".19"/></filter>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#blue)"/>
+  <path d="M116 155c0-33 27-60 60-60h160c33 0 60 27 60 60v149c0 33-27 60-60 60H228l-81 56v-66c-19-10-31-30-31-52z" fill="#fff" filter="url(#soft)"/>
+  <rect x="205" y="222" width="102" height="89" rx="18" fill="#2D91D1"/>
+  <path d="M226 226v-22c0-23 15-38 30-38s30 15 30 38v22" fill="none" stroke="#2D91D1" stroke-width="17" stroke-linecap="round"/>
+  <circle cx="256" cy="260" r="9" fill="white"/><path d="M256 264v18" stroke="white" stroke-width="8" stroke-linecap="round"/>
+</svg>

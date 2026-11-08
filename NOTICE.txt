@@ -1,0 +1,51 @@
+چت امن — اطلاعیهٔ حق نشر دارایی‌های همراه
+Chat Amn — third-party notices
+
+کد اصلی برنامه: © 2026 eh3andark، با مجوز MIT؛ متن کامل در LICENSE است.
+این مجوز جایگزین مجوز قلم‌ها و آیکن‌های شخص ثالث نمی‌شود. هنگام بازنشر،
+متن مجوزهای جداگانهٔ پایین را همراه دارایی‌ها نگه دارید.
+
+قلم‌های محلی — SIL Open Font License 1.1:
+- Vazirmatn / وزیرمتن: The Vazirmatn Project Authors
+  assets/fonts/Vazirmatn-Variable.woff2 | assets/fonts/OFL.txt
+  https://github.com/rastikerdar/vazirmatn
+- Estedad / استعداد: The Estedad Project Authors
+  assets/fonts/Estedad-Variable.woff2 | assets/fonts/Estedad-OFL.txt
+  https://github.com/aminabedi68/Estedad
+- Sahel / ساحل: Saber Rastikerdar
+  assets/fonts/Sahel-Variable.woff2 | assets/fonts/Sahel-OFL.txt
+  https://github.com/rastikerdar/sahel-font
+- Shabnam / شبنم: Saber Rastikerdar
+  assets/fonts/Shabnam.woff2 | assets/fonts/Shabnam-OFL.txt
+  https://github.com/rastikerdar/shabnam-font
+- Samim / صمیم: Saber Rastikerdar
+  assets/fonts/Samim.woff2 | assets/fonts/Samim-OFL.txt
+  https://github.com/rastikerdar/samim-font
+- Parastoo / پرستو: Saber Rastikerdar
+  assets/fonts/Parastoo.woff2 | assets/fonts/Parastoo-OFL.txt
+  https://github.com/rastikerdar/parastoo-font
+- Gandom / گندم: Saber Rastikerdar
+  assets/fonts/Gandom.woff2 | assets/fonts/Gandom-OFL.txt
+  https://github.com/rastikerdar/gandom-font
+- Mikhak / میخک: The Mikhak Project Authors
+  assets/fonts/Mikhak.woff2 | assets/fonts/Mikhak-OFL.txt
+  https://github.com/aminabedi68/Mikhak
+- Noto Sans Arabic / نوتو سنس عربی: The Noto Project Authors
+  assets/fonts/NotoSansArabic.woff2 | assets/fonts/NotoSansArabic-OFL.txt
+  https://github.com/notofonts/arabic
+- Noto Naskh Arabic / نوتو نسخ عربی: The Noto Project Authors
+  assets/fonts/NotoNaskhArabic.woff2 | assets/fonts/NotoNaskhArabic-OFL.txt
+  https://github.com/notofonts/arabic
+
+متن هر فایل OFL، حق نشر و شروط دقیق همان قلم از جمله نام‌های رزروشده را دارد.
+منابع Noto TTF با حفظ مجوز به WOFF2 تبدیل شده‌اند. قلم اختصاصی IranSans همراه برنامه نیست.
+
+آیکن‌های رابط: فایل محلی assets/img/ui-icons.svg شامل ۴۲ نماد از Lucide
+(lucide-static@0.548.0) با مجوز ISC و بخش‌های برگرفته از Feather با مجوز MIT است.
+https://lucide.dev/
+اطلاعیه و متن کامل هر دو مجوز: assets/img/LUCIDE-LICENSE.txt
+assets/img/icon.svg و آیکن‌های PWA اثر مستقل پروژه‌اند، نه نشان تجاری Lucide.
+هیچ قلم اختصاصی یا نشان تجاری تلگرام به‌عنوان دارایی بسته‌بندی نشده است.
+
+سرویس‌های اختیاری تلگرام/وب/AI/TGJU سرویس‌های بیرونی‌اند؛ محتوا و شرایط آن‌ها
+تحت مجوز کد این برنامه قرار نمی‌گیرد. چت اصلی به این سرویس‌ها وابسته نیست.
